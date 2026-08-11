@@ -1,10 +1,13 @@
-class Solution(object):
+class Solution:
     def missingNumber(self, nums):
-        
-      n = len(nums)
+        n = len(nums)
 
-      expected_sum = n*(n+1) // 2
+        xor = 0
 
-      actual_sum = sum(nums)
+        for i in range(n + 1):
+            xor ^= i
 
-      return expected_sum - actual_sum  
+        for num in nums:
+            xor ^= num
+
+        return xor
